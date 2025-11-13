@@ -23,6 +23,11 @@ with mp_face_mesh.FaceMesh(
 
     # Mendapatkan feed video dari index 0
     cap = cv2.VideoCapture(0)
+
+    # Resolusi bisa dipakai tergantung dukungan kamera
+    cap.set(cv2.CAP_PROP_FRAME_WIDTH, 640.0)
+    cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 480.0)
+
     if not cap.isOpened():
         print("Eror: Tidak bisa buka webcam.")
         exit()

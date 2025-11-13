@@ -162,7 +162,7 @@ def get_stats():
     while True:
         # Kirim data 'stats' global dalam format JSON
         json_data = json.dumps(stats)
-        # yield f"data: {json_data}\n\n"
+        yield f"data: {json_data}\n\n"
         time.sleep(0.2)  # Update setiap 200ms
 
 
@@ -187,10 +187,4 @@ def stats_feed():
 if __name__ == '__main__':
     # Jalankan server Flask
     # host='0.0.0.0' agar bisa diakses dari perangkat lain di jaringan yang sama
-    text = """
-      WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
- * Running on http://127.0.0.1:5000
-Press CTRL+C to quit  
-    """
     app.run(host='0.0.0.0', port=5000, debug=True)
-    print(text)
