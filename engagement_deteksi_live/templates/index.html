@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demo Deteksi Keterlibatan</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        h1 {
+            color: #333;
+        }
+        img {
+            border: 5px solid #555;
+            border-radius: 10px;
+            background-color: #000;
+        }
+    </style>
+</head>
+<body>
+    <h1>Demo Deteksi Keterlibatan</h1>
+    <div>
+        <!-- Tag img ini akan menampilkan stream dari endpoint /video_feed -->
+        <img src="{{ url_for('video_feed') }}" width="800">
+    </div>
+     <div>
+        <h2>Statistik Real-time</h2>
+        <div >FPS: <span id="fps-value">--</span></div>
+        <div">Level Engagement: <span id="level-value">--</span></div>
+        <div">Modus/Majority Voting (per 5 dtk): <span id="modus-value">--</span></div>
+    </div>
+
+    <script>
+        // Membuat koneksi ke endpoint Server-Sent Events
+        const eventSource = new EventSource("{{ url_for('stats_feed') }}");
+
+        // Fungsi ini akan dijalankan setiap kali ada pesan baru dari server
+        eventSource.onmessage = function(event) {
+            // Parse data JSON yang diterima
+            const data = JSON.parse(event.data);
+
+            // Update elemen HTML dengan data baru
+            document.getElementById('fps-value').textContent = data.fps;
+            document.getElementById('level-value').textContent = data.level;
+            document.getElementById('modus-value').textContent = data.modus;
+        };
+
+        // Opsional: Handle error jika koneksi terputus
+        eventSource.onerror = function(err) {
+            console.error("EventSource failed:", err);
+            document.getElementById('level-value').textContent = "Koneksi terputus";
+        };
+    </script>
+</body>
+</html>
