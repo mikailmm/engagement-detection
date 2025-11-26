@@ -23,4 +23,8 @@ uv.lock
 
 ./engagement_deteksi_live/boredom-model2-randomforest
 
-./extract_engagement/*.csv
+extract_engagement/*.csv
+
+training/mlruns
+training/mlruns/*
+training/results/*
