@@ -25,7 +25,7 @@ drawing_spec = mp_drawing.DrawingSpec(
     thickness=1, circle_radius=1, color=(0, 255, 0))
 
 options = PoseLandmarkOptions(
-    base_options=BaseOption(model_asset_path="./pose_landmarker_lite.task"),
+    base_options=BaseOption(model_asset_path="./../pose_landmarker_lite.task"),
     running_mode=VisionTaskRunningMode.LIVE_STREAM,
     num_poses=1,
     min_pose_detection_confidence=0.5,

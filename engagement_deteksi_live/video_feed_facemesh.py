@@ -12,7 +12,7 @@ FaceLandmarkerOptions = mp.tasks.vision.FaceLandmarkerOptions
 VisionRunningMode = mp.tasks.vision.RunningMode
 
 # Lokasi file model yang sudah didownload
-MODEL_PATH = 'face_landmarker.task'
+MODEL_PATH = '../face_landmarker.task'
 
 # Global variable untuk menyimpan hasil deteksi dari callback
 LATEST_RESULT = None

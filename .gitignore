@@ -19,4 +19,8 @@ uv.lock
 .python-version
 */.python-version
 
+./*/*.task
+
 ./engagement_deteksi_live/boredom-model2-randomforest
+
+./extract_engagement/*.csv
