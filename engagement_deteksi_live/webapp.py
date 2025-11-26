@@ -48,6 +48,7 @@ def generate_frames():
     """Generator function untuk streaming frame video."""
     global stats
     global prev_frame_time, arr_hasil_deteksi
+    # Raspi disable
     show_mesh = True
 
     cap = cv2.VideoCapture(0)
@@ -69,6 +70,7 @@ def generate_frames():
             break
 
         # Balik frame secara horizontal
+        # Raspi disable or frame = frame[:, ::-1, :]
         frame = cv2.flip(frame, 1)
 
         # Konversi warna untuk MediaPipe

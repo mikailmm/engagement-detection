@@ -143,6 +143,7 @@ with mp_face_mesh.FaceMesh(
             cv2.putText(frame, f"Level engagement: {predicted_level[0]}", (10, 60), font,
                         1, (100, 255, 0), 2, cv2.LINE_AA)
 
+            # Raspi i%4 == 0:
             print(f"{fps_text} Frame {i} Level engagement:",
                   predicted_level[0], len(arr_hasil_deteksi), end='\r')
             i += 1
